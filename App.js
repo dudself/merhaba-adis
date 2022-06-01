@@ -6,13 +6,18 @@ import Homepage from "./src/screens/Homepage";
 
 export default function App() {
 
-  
   let [fontsLoaded] = useFonts({
     'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <AppLoading
+        startAsync={this._cacheResourcesAsync}
+        onFinish={() => this.setState({ isReady: true })}
+        onError={console.warn}
+      />
+    ); 
   }
   
   else {
@@ -22,7 +27,13 @@ export default function App() {
     );
 }
 
+// const cacheImages = images.map(image => {
+//   return Asset.fromModule(image).downloadAsync();
+// }); 
+
 }
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

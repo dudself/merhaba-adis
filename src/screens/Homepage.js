@@ -5,27 +5,31 @@ import { SpeechOptions } from 'expo-speech';
 
 
 export default function Homepage(){
+
+  //Input State
   const [input, setInput] = React.useState("");
 
+  //TTS - Speak Function
   const speak = () => {
     const options = {
       language: "tr-TR",
       rate: 1.05,
       pitch: 0.9
     };
-
     Speech.speak(input, options);
   };
 
    return (
 
    <View style={styles.container}>
-
+     
    <TextInput style={styles.input} onChangeText={(text) => setInput(text)} />
 
    <Pressable style={styles.button} onPress={speak}>
     <Text style={styles.text}>Konuş</Text>
    </Pressable>
+
+   <Pressable></Pressable>
 
  </View>
  );
@@ -34,12 +38,14 @@ export default function Homepage(){
 const styles = StyleSheet.create({
    container: {
       flex: 1,
+      flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       padding: 8,
     },
 
     input: {
+      marginTop: 100,
       alignItems: 'center',
       justifyContent: 'center',
       width : 350,
