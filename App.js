@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import Main from "./src/screens";
+import Main from "./src/screens/Homepage";
 
 export default function App() {
 
@@ -41,7 +41,7 @@ const [isAppReady, setIsAppReady] = useState(false);
   }
   
   return (
-     <index />
+     <Main />
     );
 }
 
@@ -52,10 +52,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
     padding: 8,
-  },
-  Texts: {
-    marginTop: 10,
-    color: 'black',
-    padding:10,
   }
 });
