@@ -1,22 +1,28 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import { useFonts } from 'expo-font';
+import { useFonts, getFonts } from 'expo-font';
 import Homepage from "./src/screens/Homepage";
 
 export default function App() {
 
-  let [fontsLoaded] = useFonts({
-    'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
-  });
+  const [fontsLoaded, setFontLoad] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      await Font.loadAsync({
+        'Mont': require('./assets/fonts/Montserrat-SemiBold.ttf')
+      }).then(() => {
+        setFontLoad(true);
+      })
+    })();
+  }, [])
 
   if (!fontsLoaded) {
     return (
-      <AppLoading
-        startAsync={this._cacheResourcesAsync}
-        onFinish={() => this.setState({ isReady: true })}
-        onError={console.warn}
-      />
+      <AppLoading startAsync={getFonts} onFinish={() => {
+        setFontLoad(true)
+      }} onError={console.warn} />
     ); 
   }
   
@@ -26,10 +32,6 @@ export default function App() {
      <Homepage />
     );
 }
-
-// const cacheImages = images.map(image => {
-//   return Asset.fromModule(image).downloadAsync();
-// }); 
 
 }
 

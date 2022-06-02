@@ -8,8 +8,9 @@ export default function Homepage(){
 
   //Input State
   const [input, setInput] = React.useState("");
+  const [speaking, isSpeaking] = React.useState(false);
 
-  //TTS - Speak Function
+  //Speak Function
   const speak = () => {
     const options = {
       language: "tr-TR",
@@ -17,19 +18,33 @@ export default function Homepage(){
       pitch: 0.9
     };
     Speech.speak(input, options);
+    onStart:() => isSpeaking(true);
   };
+
+  // Pause-Resume Function
+  const pauseResume = () => {
+    if(isSpeaking == true) {
+      onPause:() => isSpeaking(false);
+    }
+    else {
+      onResume:() => isSpeaking(true);
+    }
+  };
+
 
    return (
 
    <View style={styles.container}>
-     
+
    <TextInput style={styles.input} onChangeText={(text) => setInput(text)} />
 
    <Pressable style={styles.button} onPress={speak}>
     <Text style={styles.text}>Konuş</Text>
    </Pressable>
 
-   <Pressable></Pressable>
+   <Pressable style={styles.button} onPress={pauseResume}>
+
+   </Pressable>
 
  </View>
  );
