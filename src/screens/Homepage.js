@@ -6,11 +6,10 @@ import { SpeechOptions } from 'expo-speech';
 
 export default function Homepage(){
 
-  //Input State
   const [input, setInput] = React.useState("");
   const [speaking, isSpeaking] = React.useState(false);
 
-  //Speak Function
+  // Konuşma
   const speak = () => {
     const options = {
       language: "tr-TR",
@@ -21,7 +20,7 @@ export default function Homepage(){
     onStart:() => isSpeaking(true);
   };
 
-  // Pause-Resume Function
+  // Durdur & kaldığın yerden devam et 
   const pauseResume = () => {
     if(isSpeaking == true) {
       Speech.pause();

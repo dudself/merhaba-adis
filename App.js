@@ -5,15 +5,19 @@ import * as Font from 'expo-font';
 import Homepage from "./src/screens/Homepage";
 
 export default function App() {
+
 const [isAppReady, setIsAppReady] = useState(false);
 
+// Landing Page 
  useEffect (() => {
    async function prepare() {
      try {
+      // Landing page'i yükleme yaparken açık tutmasının yanı sıra hideAsync çağırılana kadar splash page gösteriyor
       //  await SplashScreen.preventAutoHideAsync();
        await Font.loadAsync({
         'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
       });
+      // 2 Saniye daha splash screen döndür
       await new Promise(resolve => setTimeout(resolve, 500));
      } catch (e) {
       console.warn(e);
