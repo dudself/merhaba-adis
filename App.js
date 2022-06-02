@@ -1,38 +1,44 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import Homepage from "./src/screens/Homepage";
 
 export default function App() {
+const [isAppReady, setIsAppReady] = useState(false);
 
+ useEffect (() => {
+   async function prepare() {
+     try {
+      //  await SplashScreen.preventAutoHideAsync();
+       await Font.loadAsync({
+        'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
+      });
+      await new Promise(resolve => setTimeout(resolve, 500));
+     } catch (e) {
+      console.warn(e);
+     } finally {
+      setIsAppReady(true);
+     }
+   }
 
+   prepare();
+ }, []);
 
- const fontLoad = () => {
-    return Font.loadAsync({
-      'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
-    }); 
-  };
+ const onLayoutRootView = useCallback(async () => {
+   if(isAppReady) {
+     await SplashScreen.hideAsync();
+   }
+ }, [isAppReady]);
+  
 
-  const [isFontLoaded, setIsFontLoaded] = useState(false);
-
-  if (!isFontLoaded) {
-    return (
-      <AppLoading
-      startAsync={fontLoad}
-      onFinish={() => setIsFontLoaded(true)}
-      onError={(err) => console.log(err)}
-      />
-    ); 
+  if (!isAppReady) {
+    return null;
   }
   
-  else {
-    
-    return (
+  return (
      <Homepage />
     );
-}
-
 }
 
 

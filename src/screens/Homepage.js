@@ -24,9 +24,11 @@ export default function Homepage(){
   // Pause-Resume Function
   const pauseResume = () => {
     if(isSpeaking == true) {
+      Speech.pause();
       onPause:() => isSpeaking(false);
     }
     else {
+      Speech.resume();
       onResume:() => isSpeaking(true);
     }
   };
@@ -43,7 +45,7 @@ export default function Homepage(){
    </Pressable>
 
    <Pressable style={styles.button} onPress={pauseResume}>
-
+   <Text style={styles.text}>Durdur / Devam et</Text>
    </Pressable>
 
  </View>
