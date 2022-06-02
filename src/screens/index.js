@@ -1,3 +1,10 @@
 import Homepage from "./Homepage"
 
-export {Homepage}
+const Main = () => {
+    return (
+        <View>
+           <Homepage /> 
+        </View>
+    );
+}
+export default Main;

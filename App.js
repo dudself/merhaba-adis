@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import Homepage from "./src/screens/Homepage";
+import Main from "./src/screens";
 
 export default function App() {
 
@@ -41,7 +41,7 @@ const [isAppReady, setIsAppReady] = useState(false);
   }
   
   return (
-     <Homepage />
+     <index />
     );
 }
 
