@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import { View, StyleSheet, Button, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import { useFonts, getFonts } from 'expo-font';
+import * as Font from 'expo-font';
 import Homepage from "./src/screens/Homepage";
 
 export default function App() {
 
-  const [fontsLoaded, setFontLoad] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      await Font.loadAsync({
-        'Mont': require('./assets/fonts/Montserrat-SemiBold.ttf')
-      }).then(() => {
-        setFontLoad(true);
-      })
-    })();
-  }, [])
 
-  if (!fontsLoaded) {
+ const fontLoad = () => {
+    return Font.loadAsync({
+      'Montserrat_SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
+    }); 
+  };
+
+  const [isFontLoaded, setIsFontLoaded] = useState(false);
+
+  if (!isFontLoaded) {
     return (
-      <AppLoading startAsync={getFonts} onFinish={() => {
-        setFontLoad(true)
-      }} onError={console.warn} />
+      <AppLoading
+      startAsync={fontLoad}
+      onFinish={() => setIsFontLoaded(true)}
+      onError={(err) => console.log(err)}
+      />
     ); 
   }
   
