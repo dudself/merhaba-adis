@@ -7,48 +7,67 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Button from '../../components/Button';
 
 export default function Homepage() {
+  
   const [input, setInput] = React.useState('');
   const isSpeaking = useRef(false);
+  const clickedResume = useRef(false);
 
   let i = 0;
 
-  // Konuşma
-  const speak = () => {
-    
-    const options = {
-      language: 'tr-TR',
-      rate: 1.1,
-      pitch: 0.9,
+  // Konuşma 
+    const speak = () => {
+      const options = {
+        language: 'tr-TR',
+        rate: 1.1,
+        pitch: 0.9,
+      };
+
+      const prompt = input.split(" ");
+      isSpeaking.current = true;
+
+      if(clickedResume.current == false){
+        i = 0;
+      }
+
+      while (i < prompt.length) {
+        output(i);
+        i++;
+      }
+      
+      function output(i) {
+        setTimeout(function() {
+          if (isSpeaking.current == true) {
+            if (clickedResume.current == true) {
+              i--;
+              Speech.speak(prompt[i], options);
+            } else {
+            Speech.speak(prompt[i], options);
+            }
+          }
+        }, 1000 * i);
+      }
+      
     };
 
-    const prompt = input.split(" ");
-    isSpeaking.current = true;
-    
-    do {
-      Speech.speak(prompt[i], options);
-      i++;
-    } while (i < prompt.length && isSpeaking.current == true);
-    
-    isSpeaking.current = false;
-    i = 0;
-
-  };
-
-  // Durdur & kaldığın yerden devam et
-  const pauseResume = () => {
-    if(isSpeaking.current == true) {
+    const pause = () => {
       isSpeaking.current = false;
-    } else if (i > 0 && isSpeaking.current == false ) {
-      isSpeaking.current = true;
-      speak();
-    } 
-  };
+   };
+
+    const resume = () => {
+      if (i > 0 && isSpeaking.current == false ) {
+        clickedResume.current = true;
+        speak();
+        clickedResume.current = false;
+      } 
+    };
+  
 
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} onChangeText={(text) => setInput(text)} />
       <Button onPress={speak} content={'ios-megaphone'} />
-      <Button onPress={pauseResume} content={'stop-circle-sharp'} />
+      <Button onPress={pause} content={'stop-circle-sharp'} />
+      <Button onPress={resume} content={'play-forward'} />
     </View>
   );
 }
