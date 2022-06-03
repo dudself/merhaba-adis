@@ -30,6 +30,7 @@ export default function Homepage() {
       }
 
       while (i < prompt.length) {
+        console.log(i);
         output(i);
         i++;
       }
@@ -39,12 +40,13 @@ export default function Homepage() {
           if (isSpeaking.current == true) {
             if (clickedResume.current == true) {
               i--;
+              console.log(i);
               Speech.speak(prompt[i], options);
             } else {
             Speech.speak(prompt[i], options);
             }
           }
-        }, 1000 * i);
+        }, 900 * i);
       }
       
     };
@@ -57,7 +59,6 @@ export default function Homepage() {
       if (i > 0 && isSpeaking.current == false ) {
         clickedResume.current = true;
         speak();
-        clickedResume.current = false;
       } 
     };
   
