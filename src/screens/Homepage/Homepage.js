@@ -56,6 +56,7 @@ export default function Homepage() {
       isSpeaking.current = false;
    };
 
+   // Reminder to improve here when you have the chance
     const resume = () => {
       if (i > 0 && isSpeaking.current == false ) {
         clickedResume.current = true;
