@@ -22,11 +22,10 @@
     },
     "android": {
       "package": "com.merhaba.adis"
+    }
     },
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png"
     },
     "web": {
       "favicon": "./assets/favicon.png"

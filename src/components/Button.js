@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Button = ({onPress, content}) => {
     return (
-    <Pressable style={( {pressed}) => [
+    <Pressable style={({pressed}) => [
       {
         backgroundColor: pressed
         ? '#ff8811'
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         paddingVertical: 20,
         paddingHorizontal: 20,
-  
         borderRadius: 50,
         
       },

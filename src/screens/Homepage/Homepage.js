@@ -5,10 +5,17 @@ import * as Speech from 'expo-speech';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Button from '../../components/Button';
+import Card from '../../components/Card';
+
+ const inputHook = () => {
+  const {input, setInput} = React.useState('');
+  return{input, setInput};
+ };
+
 
 export default function Homepage() {
-  
-  const [input, setInput] = React.useState('');
+ 
+  const {input, setInput} = inputHook();
   const isSpeaking = useRef(false);
   const clickedResume = useRef(false);
 
@@ -64,13 +71,18 @@ export default function Homepage() {
       } 
     };
   
-
+const icon = {
+  family: "AntDesign",
+  name: "wallet",
+  color: "black",
+}
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} onChangeText={(text) => setInput(text)} />
       <Button onPress={speak} content={'ios-megaphone'} />
       <Button onPress={pause} content={'stop-circle-sharp'} />
       <Button onPress={resume} content={'play-forward'} />
+      <Card onPress={speak} text={'Merhaba Ben Vin'} icon={icon}/>
     </View>
   );
 }
