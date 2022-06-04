@@ -38,15 +38,16 @@ export default function Homepage() {
       function output(i) {
         setTimeout(function() {
           if (isSpeaking.current == true) {
-            if (clickedResume.current == true) {
-              i--;
-              console.log(i);
-              Speech.speak(prompt[i], options);
-            } else {
+            // if (clickedResume.current == true) {
+            //   i--;
+            //   console.log(i);
+            //   Speech.speak(prompt[i], options);
+            // } else {
+            // Speech.speak(prompt[i], options);
+            // }
             Speech.speak(prompt[i], options);
-            }
           }
-        }, 900 * i);
+        }, 1000 * i);
       }
       
     };
@@ -59,6 +60,7 @@ export default function Homepage() {
       if (i > 0 && isSpeaking.current == false ) {
         clickedResume.current = true;
         speak();
+        clickedResume.current = false;
       } 
     };
   
