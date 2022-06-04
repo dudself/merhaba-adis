@@ -1,4 +1,4 @@
-//css dump ?? ig
+//styles dump ?? ig
 
 const COLORS = {
     primary: '#9dd9d2',

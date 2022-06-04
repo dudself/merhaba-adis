@@ -30,7 +30,6 @@ export default function Homepage() {
       }
 
       while (i < prompt.length) {
-        console.log(i);
         output(i);
         i++;
       }

@@ -21,6 +21,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.merhaba.adis"
+    },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,4 +32,4 @@
       "favicon": "./assets/favicon.png"
     }
   }
-}
+

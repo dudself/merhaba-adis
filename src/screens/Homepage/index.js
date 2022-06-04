@@ -2,9 +2,9 @@ import { View } from 'react-native';
 
 import Homepage from "./Homepage"
 
-const Main = () => {
+const Home = () => {
     return (
           <Homepage />
     );
 }
-export default Main;
+export default Home;
