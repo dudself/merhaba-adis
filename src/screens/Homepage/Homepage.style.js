@@ -2,18 +2,29 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     container: {
-       flex: 1,
-       flexDirection: 'row',
-       alignItems: 'center',
-       flexWrap: 'wrap',
-       justifyContent: 'space-evenly',
-       paddingTop: 100,
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-evenly',
+      paddingTop: 100,
+     },
+
+     tts: {
+      flex: 0.6,
+      display: 'flex',
+      alignItems: 'center',
+     },
+
+     pecs: {
+      flex: 1.4,
+      alignItems: 'center',
+      backgroundColor: 'grey',
      },
  
      input: {
        height: 100,
        width : 350,
-       
+       padding: 20,
        fontSize: 22,
        fontFamily: "Montserrat_SemiBold",
        letterSpacing: 0.25,
@@ -21,19 +32,12 @@ export default StyleSheet.create({
        borderColor: '#392f5a',
        borderRadius: 15,
        borderWidth: 5,
-       paddingLeft: 20,
-       paddingRight: 20,
      },
- 
-     button: {
-       marginTop: 50,
-       paddingVertical: 20,
-       paddingHorizontal: 20,
- 
-       borderRadius: 50,
-       backgroundColor: '#9dd9d2',
-       
-     },
+
+      buttonMap:{
+        flexDirection: 'row',
+        flexWrap: 'wrap', 
+      },
  
      text: {
        fontSize: 16,
