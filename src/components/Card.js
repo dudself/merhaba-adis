@@ -1,11 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 import IconPicker from "react-native-icon-picker";
-import inputHook from '../screens/Homepage/Homepage.js';
-import AntDesign from '@expo/vector-icons/AntDesign';
 
-const Card = ({onPress, text, icon}) => {
-    const {input, setInput} = inputHook();
+const Card = ({iconLibrary, onPress, text, icon}) => {
     return (
         <Pressable style={({pressed}) => [
             {
@@ -15,9 +12,8 @@ const Card = ({onPress, text, icon}) => {
             },
             styles.card
         ]}
-        onPress={onPress} 
-        onPressIn={(text) =>setInput(text)}>
-         <AntDesign name={icon.name} size={30} color={icon.color}/>
+        onPress={onPress}>
+         <{iconLibrary} name={icon.name} size={30} color={icon.color}/>
         </Pressable>
     )
 }
@@ -28,7 +24,6 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 20,
         borderRadius: 10,
-        
       },
   
       text: {
