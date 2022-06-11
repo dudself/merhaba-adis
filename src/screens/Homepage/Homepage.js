@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Button from '../../components/Button';
 import Speak from '../../hooks/Speak';
+import FetchListScreen from '../../components/FetchList';
 
 export default function Homepage() {
   const [input, setInput] = React.useState('');
@@ -39,6 +40,9 @@ export default function Homepage() {
           <Button onPress={speakTTS} content={'ios-megaphone'} />
           <Button onPress={pause} content={'stop-circle-sharp'} />
           <Button onPress={resume} content={'play-forward'} />
+        </View>
+        <View>
+          <FetchListScreen />
         </View>
       </View>
     </View>
