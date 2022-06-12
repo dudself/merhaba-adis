@@ -17,7 +17,7 @@ export default function App() {
           Montserrat_SemiBold: require('./assets/fonts/Montserrat-SemiBold.ttf'),
         });
         // 2 Saniye daha splash screen döndür
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 300));
       } catch (e) {
         console.warn(e);
       } finally {

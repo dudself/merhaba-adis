@@ -6,7 +6,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Button from '../../components/Button';
 import Speak from '../../hooks/Speak';
-import FetchListScreen from '../../components/FetchList';
+import Board from '../../components/Board';
+
+import FetchSymbol from '../../hooks/FetchSymbol';
 
 export default function Homepage() {
   const [input, setInput] = React.useState('');
@@ -41,9 +43,10 @@ export default function Homepage() {
           <Button onPress={pause} content={'stop-circle-sharp'} />
           <Button onPress={resume} content={'play-forward'} />
         </View>
-        <View>
-          <FetchListScreen />
-        </View>
+      </View>
+      <View style={styles.board}>
+        <FetchSymbol />
+        <Board />
       </View>
     </View>
   );
