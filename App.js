@@ -14,7 +14,7 @@ export default function App() {
         // Landing page'i yükleme yaparken açık tutmasının yanı sıra hideAsync çağırılana kadar splash page gösteriyor
         //  await SplashScreen.preventAutoHideAsync();
         await Font.loadAsync({
-          Montserrat_SemiBold: require('./assets/fonts/Montserrat-SemiBold.ttf'),
+          Montserrat_SemiBold: require('./src/assets/fonts/Montserrat-SemiBold.ttf'),
         });
         // 2 Saniye daha splash screen döndür
         await new Promise(resolve => setTimeout(resolve, 300));

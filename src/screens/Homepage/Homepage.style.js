@@ -10,19 +10,19 @@ export default StyleSheet.create({
   },
 
   tts: {
-    flex: 1,
+    flex: 0.5,
     display: 'flex',
     alignItems: 'center',
   },
 
   board: {
-    flex: 1,
+    flex: 1.1,
     alignItems: 'center',
     margin: 25,
   },
 
   input: {
-    height: 230,
+    height: 130,
     width: 350,
     padding: 20,
     fontSize: 22,

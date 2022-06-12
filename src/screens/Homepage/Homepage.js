@@ -1,14 +1,13 @@
 import React, {useState, useRef} from 'react';
 import {View, StyleSheet, Pressable, Text, TextInput} from 'react-native';
-import styles from './Homepage.style';
 import * as Speech from 'expo-speech';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import Button from '../../components/Button';
-import Speak from '../../hooks/Speak';
-import Board from '../../components/Board';
+import styles from './Homepage.style';
 
-import FetchSymbol from '../../hooks/FetchSymbol';
+import Button from '../../components/Button';
+import Speak from '../../services/Speak';
+import Board from '../../components/Board';
 
 export default function Homepage() {
   const [input, setInput] = React.useState('');
@@ -45,7 +44,6 @@ export default function Homepage() {
         </View>
       </View>
       <View style={styles.board}>
-        <FetchSymbol />
         <Board />
       </View>
     </View>

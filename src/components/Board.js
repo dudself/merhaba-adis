@@ -1,23 +1,25 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 
+import bdata from '../data/BoardData';
+
 export default function Board() {
-  const [items, setItems] = React.useState([
-    {name: 'TURQUOISE', code: '#1abc9c'},
-    {name: 'EMERALD', code: '#2ecc71'},
-    {name: 'PETER RIVER', code: '#3498db'},
-    {name: 'AMETHYST', code: '#9b59b6'},
-  ]);
+  const [items, setItems] = React.useState(bdata);
+
   return (
     <FlatGrid
+      itemDimension={100}
       data={items}
-      itemDimension={150}
+      style={styles.gridView}
       spacing={10}
       renderItem={({item}) => (
-        <View styles={[styles.card, {backgroundColor: item.code}]}>
+        <View style={[styles.card, {backgroundColor: item.bgColor}]}>
           <Pressable onPress={() => console.log('hello')}>
-            <Text styles={{fontColor: 'white'}}>{item.name}</Text>
+            <Image style={styles.symbol} source={item.symbol} />
+            <Text style={[styles.text, {color: item.textColor}]}>
+              {item.text}
+            </Text>
           </Pressable>
         </View>
       )}
@@ -26,10 +28,24 @@ export default function Board() {
 }
 
 const styles = StyleSheet.create({
+  gridView: {
+    marginTop: 10,
+    flex: 1,
+  },
   card: {
-    justifyContent: 'flex-end',
-    fontSize: 22,
+    justifyContent: 'space-evenly',
     borderRadius: 5,
-    padding: 10,
+    padding: 20,
+  },
+  symbol: {
+    alignItems: 'center',
+    width: 50,
+    height: 50,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontFamily: 'Montserrat_SemiBold',
+    letterSpacing: 0.25,
   },
 });
