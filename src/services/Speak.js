@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import * as Speech from 'expo-speech';
+import options from '../data/TtsData';
 
 export default function Speak(prompt, i, clickedResume, isSpeaking) {
   isSpeaking.current = true;
