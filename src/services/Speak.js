@@ -1,14 +1,13 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import * as Speech from 'expo-speech';
 
-function Speak(prompt, i, clickedResume, isSpeaking) {
+export default function Speak(prompt, i, clickedResume, isSpeaking) {
   isSpeaking.current = true;
-  const options = {
-    language: 'tr-TR',
-    rate: 1.1,
-    pitch: 0.9,
+  let ttsOptions = {
+    language: options[0],
+    rate: options[1],
+    pitch: options[2],
   };
-
   if (clickedResume.current == false) {
     i = 0;
   }
@@ -21,12 +20,10 @@ function Speak(prompt, i, clickedResume, isSpeaking) {
   function output(i) {
     setTimeout(function () {
       if (isSpeaking.current == true) {
-        Speech.speak(prompt[i], options);
+        Speech.speak(prompt[i], ttsOptions);
       }
-    }, 1000 * i);
+    }, 500 * i);
   }
 
   return i;
 }
-
-export default Speak;

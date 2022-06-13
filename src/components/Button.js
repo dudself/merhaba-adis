@@ -20,7 +20,7 @@ const Button = ({onPress, content}) => {
 
 const styles = StyleSheet.create({
   button: {
-    marginVertical: 25,
+    marginVertical: 20,
     marginHorizontal: 20,
     paddingVertical: 22,
     paddingHorizontal: 22,

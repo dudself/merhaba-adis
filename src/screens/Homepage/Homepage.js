@@ -1,5 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, StyleSheet, Pressable, Text, TextInput} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+  TextInput,
+  KeyboardAvoidingView,
+} from 'react-native';
 import * as Speech from 'expo-speech';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -9,7 +16,7 @@ import Button from '../../components/Button';
 import Board from '../../components/Board';
 import Speak from '../../services/Speak';
 
-export default function Homepage() {
+export default function Homepage({navigation}) {
   let [input, setInput] = React.useState('');
   const [board, updateBoard] = React.useState('');
   const isSpeaking = useRef(false);
@@ -44,22 +51,24 @@ export default function Homepage() {
   }, [board]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.tts}>
-        <TextInput
-          style={styles.input}
-          value={input}
-          onChangeText={text => setInput(text)}
-        />
-        <View style={styles.buttonMap}>
-          <Button onPress={speakTTS} content={'ios-megaphone'} />
-          <Button onPress={pause} content={'stop-circle-sharp'} />
-          <Button onPress={resume} content={'play-forward'} />
+    <KeyboardAvoidingView behavior={'paddimg'} enable style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.tts}>
+          <TextInput
+            style={styles.input}
+            value={input}
+            onChangeText={text => setInput(text)}
+          />
+          <View style={styles.buttonMap}>
+            <Button onPress={speakTTS} content={'ios-megaphone'} />
+            <Button onPress={pause} content={'stop-circle-sharp'} />
+            <Button onPress={resume} content={'play-forward'} />
+          </View>
+        </View>
+        <View style={styles.board}>
+          <Board onPress={update} />
         </View>
       </View>
-      <View style={styles.board}>
-        <Board onPress={update} />
-      </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }

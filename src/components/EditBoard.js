@@ -6,7 +6,6 @@ import bdata from '../data/BoardData';
 
 export default function Board({onPress}) {
   const [items, setItems] = React.useState(bdata);
-  const [boardInput, setBInput] = React.useState('');
 
   return (
     <FlatGrid
@@ -17,7 +16,7 @@ export default function Board({onPress}) {
       renderItem={({item}) => (
         <View style={[styles.card, {backgroundColor: item.bgColor}]}>
           <Pressable onPress={boardInput => setBInput(item.text)}>
-            <Pressable onPress={() => onPress(item.text)}>
+            <Pressable onPress={() => onPress(item)}>
               <Image style={styles.symbol} source={item.symbol} />
               <Text style={[styles.text, {color: item.textColor}]}>
                 {item.text}

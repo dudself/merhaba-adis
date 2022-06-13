@@ -6,7 +6,8 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
-    paddingTop: 100,
+    paddingTop: 20,
+    backgroundColor: 'white',
   },
 
   tts: {
@@ -18,13 +19,14 @@ export default StyleSheet.create({
   board: {
     flex: 1.1,
     alignItems: 'center',
-    margin: 25,
+    margin: 17,
+    backgroundColor: 'white',
   },
 
   input: {
     height: 130,
     width: 350,
-    padding: 20,
+    padding: 15,
     fontSize: 22,
     fontFamily: 'Montserrat_SemiBold',
     letterSpacing: 0.25,
