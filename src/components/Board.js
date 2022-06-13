@@ -4,8 +4,9 @@ import {FlatGrid} from 'react-native-super-grid';
 
 import bdata from '../data/BoardData';
 
-export default function Board() {
+export default function Board({onPress}) {
   const [items, setItems] = React.useState(bdata);
+  const [boardInput, setBInput] = React.useState('');
 
   return (
     <FlatGrid
@@ -15,11 +16,13 @@ export default function Board() {
       spacing={10}
       renderItem={({item}) => (
         <View style={[styles.card, {backgroundColor: item.bgColor}]}>
-          <Pressable onPress={() => console.log('hello')}>
-            <Image style={styles.symbol} source={item.symbol} />
-            <Text style={[styles.text, {color: item.textColor}]}>
-              {item.text}
-            </Text>
+          <Pressable onPress={boardInput => setBInput(item.text)}>
+            <Pressable onPress={() => onPress(item.text)}>
+              <Image style={styles.symbol} source={item.symbol} />
+              <Text style={[styles.text, {color: item.textColor}]}>
+                {item.text}
+              </Text>
+            </Pressable>
           </Pressable>
         </View>
       )}
